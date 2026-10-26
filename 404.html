@@ -257,10 +257,11 @@ function mostrar(id) {
   $('pie').hidden = id === 'cargando';
 }
 
-// "157.73" -> "157,73"; "94.00" -> "94"
+// Metros enteros para la franja de datos: "157.73" -> "157". Se trunca, no se
+// redondea: 158 m² seria mostrar mas superficie de la que tiene.
 function metros(v) {
-  var n = Number(v);
-  return n ? n.toLocaleString('es-AR', { maximumFractionDigits: 0 }) : '';
+  var n = Math.floor(Number(v));
+  return n ? n.toLocaleString('es-AR') : '';
 }
 
 /* ---------- galeria ---------- */
