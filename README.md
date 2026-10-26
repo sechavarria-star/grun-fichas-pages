@@ -21,7 +21,10 @@ amaira (`ficha.amaira.com.ar/nue/ficha.php?ficha=SOW205`) que manda el agente.
 - **CORS.** El webhook acepta `https://sechavarria-star.github.io` (pruebas) y
   `https://fichas.inmobiliariagrun.com` (definitivo).
 - **Botón WhatsApp.** Abre la línea del asistente (`5493795768454`) con un mensaje con la
-  dirección y la REF.
+  dirección y la REF. "Ver propiedades parecidas" abre la misma línea pidiendo opciones.
+- **Diseño:** variante "B · Negro premium" de los mockups (26/10/2026), con el lenguaje de
+  su Instagram: negro, rojo #D7193A (texto rojo sobre negro: #FF4D66 por contraste),
+  Montserrat en negrita. Mockups: https://claude.ai/artifact/DM1XaBRHihErY1Nko3a8qC
 
 ## Dominio
 
