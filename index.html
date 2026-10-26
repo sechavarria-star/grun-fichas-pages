@@ -93,17 +93,6 @@ h1 { margin: 0; font-size: 28px; line-height: 1.1; font-weight: 800; text-transf
 .dato .n { font-size: 22px; font-weight: 800; font-variant-numeric: tabular-nums; }
 .dato .k { font-size: 10.5px; font-weight: 700; letter-spacing: .06em; color: var(--gris); text-transform: uppercase; }
 
-/* ---------- grilla de fotos ---------- */
-.grilla { margin: 22px 16px 0; display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 6px; }
-.grilla button { padding: 0; border: 0; background: var(--panel); cursor: zoom-in; height: 34vw; max-height: 170px; min-height: 120px; }
-.grilla img { width: 100%; height: 100%; object-fit: cover; display: block; }
-.grilla .mas {
-  border: 1px solid var(--linea); color: #fff; font-family: inherit;
-  display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 4px;
-}
-.grilla .mas b { font-size: 26px; font-weight: 800; }
-.grilla .mas span { font-size: 11px; font-weight: 700; letter-spacing: .08em; color: var(--gris); }
-
 /* ---------- la propiedad ---------- */
 .bloque { padding: 28px 16px 0; display: flex; flex-direction: column; gap: 12px; }
 h2 { margin: 0; font-size: 13px; font-weight: 800; letter-spacing: .12em; color: var(--rojo-tx); text-transform: uppercase; }
@@ -198,8 +187,6 @@ footer a { color: #fff; font-weight: 600; text-decoration: none; }
 
     <div class="datos" id="datos"></div>
 
-    <div class="grilla" id="grilla"></div>
-
     <section class="bloque" id="bloqueProp" hidden>
       <h2>La propiedad</h2>
       <ul class="puntos" id="puntos"></ul>
@@ -273,7 +260,7 @@ function verFoto(i) {
   ACTUAL = (i + FOTOS.length) % FOTOS.length;
   $('foto').src = FOTOS[ACTUAL];
   $('barra').style.width = ((ACTUAL + 1) / FOTOS.length * 100) + '%';
-  $('contador').textContent = FOTOS.length > 1 ? 'Deslizá · ' + (ACTUAL + 1) + ' de ' + FOTOS.length + ' fotos' : '1 foto';
+  $('contador').textContent = FOTOS.length > 1 ? 'Deslizá o tocá · ' + (ACTUAL + 1) + ' de ' + FOTOS.length : 'Tocá para ampliar';
   if (!$('visor').hidden) abrirVisor(ACTUAL);
   var sig = new Image(); sig.src = FOTOS[(ACTUAL + 1) % FOTOS.length];   // precarga
 }
@@ -301,24 +288,8 @@ function armarGaleria(fotos) {
   var unica = FOTOS.length <= 1;
   $('prev').hidden = unica; $('next').hidden = unica;
   $('vPrev').hidden = unica; $('vNext').hidden = unica;
-  if (!FOTOS.length) { $('foto').hidden = true; $('avance').hidden = true; $('grilla').hidden = true; return; }
+  if (!FOTOS.length) { $('foto').hidden = true; $('avance').hidden = true; return; }
   verFoto(0);
-
-  // Grilla: las fotos 2 a 4, y la cuarta celda lleva a ver todas.
-  var g = $('grilla'); g.innerHTML = '';
-  var extra = FOTOS.slice(1, 4);
-  extra.forEach(function (src, k) {
-    var b = document.createElement('button'); b.type = 'button'; b.setAttribute('aria-label', 'Ver foto ' + (k + 2));
-    var im = document.createElement('img'); im.src = src; im.loading = 'lazy'; im.alt = '';
-    b.appendChild(im); b.addEventListener('click', function () { abrirVisor(k + 1); }); g.appendChild(b);
-  });
-  var resto = FOTOS.length - 1 - extra.length;
-  if (resto > 0) {
-    var m = document.createElement('button'); m.type = 'button'; m.className = 'mas';
-    m.innerHTML = '<b>+' + resto + '</b><span>VER TODAS</span>';
-    m.addEventListener('click', function () { abrirVisor(extra.length + 1); }); g.appendChild(m);
-  }
-  if (!extra.length) g.hidden = true;
 }
 
 /* ---------- datos ---------- */
