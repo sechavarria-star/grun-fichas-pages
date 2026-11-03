@@ -18,8 +18,8 @@ amaira (`ficha.amaira.com.ar/nue/ficha.php?ficha=SOW205`) que manda el agente.
   ficha para cualquier ruta (`/SOW224`). Si se edita uno, copiar al otro.
 - **Fotos.** Se muestran directo del CDN de Xintel (`cdn-images.xintelweb.com`), que no
   bloquea el hotlink (verificado el 26/10/2026).
-- **CORS.** El webhook acepta `https://sechavarria-star.github.io` (pruebas) y
-  `https://fichas.inmobiliariagrun.com` (definitivo).
+- **CORS.** El webhook acepta `https://fichas.appgrun.giwa-ia.com` y
+  `https://sechavarria-star.github.io` (este último ya redirige al dominio; se puede sacar).
 - **Botón WhatsApp.** Abre la línea del asistente (`5493795768454`) con un mensaje con la
   dirección y la REF. "Ver propiedades parecidas" abre la misma línea pidiendo opciones.
 - **Diseño:** variante "B · Negro premium" de los mockups (26/10/2026), con el lenguaje de
@@ -28,6 +28,6 @@ amaira (`ficha.amaira.com.ar/nue/ficha.php?ficha=SOW205`) que manda el agente.
 
 ## Dominio
 
-Definitivo: `fichas.inmobiliariagrun.com`. Falta que el cliente agregue en su DNS
-`CNAME fichas → sechavarria-star.github.io` y recién ahí se suma el archivo `CNAME`.
-Mientras tanto: `https://sechavarria-star.github.io/grun-fichas-pages/SOW224`.
+`https://fichas.appgrun.giwa-ia.com/SOW224` (desde el 03/11/2026). DNS en Squarespace:
+`CNAME fichas.appgrun → sechavarria-star.github.io`, archivo `CNAME` en el repo y HTTPS
+forzado en GitHub Pages. El link viejo de `github.io` redirige solo.
